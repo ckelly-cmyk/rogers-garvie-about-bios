@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Rogers &amp; Garvie About Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Merriweather:wght@400;700&family=Arvo:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: mirrors the live rogersandgarvie.com theme. Rust sub-header band, cream content ground,
+   attorneys first (founders as linked feature cards, associate as a full row), staff grid below.
+   Single light theme on purpose: this is a mock of the client's light-only site. */
+:root{
+  --rust:#8A461D;      /* headings, accents (live site h1/h2) */
+  --rust-deep:#A23F00; /* button hover / band */
+  --ink:#2B2620;       /* body copy */
+  --night:#271310;     /* CTA band + footer */
+  --cream:#FAF8F1;     /* section ground */
+  --sand:#F2EEE9;      /* card wells */
+  --paper:#FFFFFF;
+  --line:#E3DBCF;
+  --note:#1F5F8B;      /* mockup annotation color, not part of the site */
+  --note-bg:#EAF3FA;
+  --f-display:"Playfair Display", Georgia, "Times New Roman", serif;
+  --f-head:"Merriweather", Georgia, serif;
+  --f-body:"Arvo", Rockwell, Georgia, serif;
+  --f-ui:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.7}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+a{color:var(--rust)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--note);outline-offset:3px}
+
+/* ---------- Mockup chrome (not part of the site) ---------- */
+.mock-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:#16120F;color:#F4EFE8;font-family:var(--f-ui);font-size:13px;padding:10px 16px;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;justify-content:space-between}
+.mock-bar strong{font-weight:600;letter-spacing:.02em}
+.mock-tabs{display:flex;flex-wrap:wrap;gap:6px}
+.mock-tabs button{font:500 13px var(--f-ui);background:transparent;color:#F4EFE8;border:1px solid #5A4C40;border-radius:999px;padding:6px 14px;cursor:pointer}
+.mock-tabs button[aria-selected="true"]{background:#F4EFE8;color:#16120F;border-color:#F4EFE8}
+.mock-tabs .url{opacity:.6;font-weight:400;margin-left:6px}
+.notes{max-width:1140px;margin:20px auto 0;padding-inline:16px}
+.notes details{background:var(--note-bg);border:1px solid #BCD6EA;border-radius:8px;font-family:var(--f-ui);font-size:14px;line-height:1.55;color:#173B55}
+.notes summary{cursor:pointer;padding:12px 16px;font-weight:600}
+.notes ul{margin:0;padding:0 20px 14px 36px;display:grid;gap:6px}
+.flag{display:inline-block;font:600 11px var(--f-ui);letter-spacing:.06em;text-transform:uppercase;color:var(--note);background:var(--note-bg);border:1px dashed var(--note);border-radius:4px;padding:2px 7px;vertical-align:middle}
+
+/* ---------- Site header ---------- */
+.site-hdr{background:linear-gradient(100deg,#3A1A10 0%,#7A3A1E 45%,#C46A3A 100%);color:#fff}
+.hdr-in{max-width:1140px;margin:0 auto;padding:18px 16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--f-display);line-height:1.05}
+.logo .mono{font-size:34px;font-weight:500;padding-right:12px;border-right:1px solid rgba(255,255,255,.5)}
+.logo .name{font-size:19px}
+.nav{display:flex;gap:26px;font-family:var(--f-ui);font-size:15px}
+.nav span{opacity:.92}
+.nav .on{border-bottom:2px solid #fff;padding-bottom:2px}
+.crumb{background:var(--rust);color:#fff;font-family:var(--f-ui);font-size:13px}
+.crumb div{max-width:1140px;margin:0 auto;padding:9px 16px}
+.crumb a{color:#fff;text-decoration:none;cursor:pointer}
+.crumb a:hover{text-decoration:underline}
+
+.wrap{max-width:1140px;margin:0 auto;padding-inline:16px}
+.page-title{font-family:var(--f-display);color:var(--rust);font-size:clamp(2rem,4vw,2.6rem);font-weight:500;padding-top:44px}
+.intro{max-width:66ch;margin-top:14px;font-size:17px}
+
+.sec-head{display:flex;align-items:baseline;gap:16px;margin:56px 0 24px}
+.sec-head h2{font-family:var(--f-display);font-weight:500;font-size:1.9rem;color:var(--rust)}
+.sec-head .rule{flex:1;height:1px;background:var(--line)}
+.sec-head .sub{font-family:var(--f-ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7B6A5B}
+
+/* Founders */
+.founders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.fcard{background:var(--paper);border:1px solid var(--line);display:grid;grid-template-columns:minmax(0,200px) minmax(0,1fr);text-decoration:none;color:inherit;transition:box-shadow .2s, transform .2s}
+.fcard:hover{box-shadow:0 10px 28px rgba(39,19,16,.12);transform:translateY(-2px)}
+.fcard img{width:100%;height:100%;aspect-ratio:2/3;object-fit:cover;display:block;max-width:100%}
+.fbody{padding:24px 24px 22px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.role{font-family:var(--f-ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7B6A5B}
+.fbody h3{font-family:var(--f-head);font-size:1.5rem;color:var(--rust)}
+.fbody p{font-size:15px}
+.more{margin-top:auto;font-family:var(--f-ui);font-weight:600;font-size:14px;color:var(--rust);display:inline-flex;gap:8px;align-items:center}
+.fcard:hover .more span{transform:translateX(3px)}
+.more span{transition:transform .2s}
+
+/* Associate + staff rows */
+.person{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:32px;padding:28px 0;border-top:1px solid var(--line)}
+.person:first-of-type{border-top:0}
+.person img,.scard img,.ph{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;max-width:100%}
+.ph{background:repeating-linear-gradient(45deg,var(--sand),var(--sand) 10px,#ECE6DE 10px,#ECE6DE 20px);display:grid;place-items:center;text-align:center;font-family:var(--f-ui);font-size:13px;color:#7B6A5B;border:1px dashed #CDBFAE;padding:12px}
+.ph b{display:block;font-family:var(--f-display);font-size:42px;color:var(--rust);font-weight:500;margin-bottom:4px}
+.pbody{min-width:0;display:flex;flex-direction:column;gap:12px;max-width:72ch}
+.pbody h3{font-family:var(--f-head);font-size:1.45rem;color:var(--rust)}
+.pbody p{font-size:15.5px}
+.toggle{align-self:flex-start;font:600 14px var(--f-ui);color:var(--rust);background:none;border:0;padding:0;cursor:pointer}
+.staff{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.scard{background:var(--paper);border:1px solid var(--line);padding:22px;display:grid;grid-template-columns:minmax(0,140px) minmax(0,1fr);gap:22px;align-items:start}
+.scard .pbody h3{font-size:1.25rem}
+.scard .pbody p{font-size:15px}
+
+/* CTA + footer */
+.cta{background:var(--cream);margin-top:64px;border-top:1px solid var(--line)}
+.cta .wrap{padding-block:52px;display:grid;grid-template-columns:minmax(0,1.4fr) auto;gap:28px;align-items:center}
+.cta h2{font-family:var(--f-head);font-size:1.7rem;color:var(--night)}
+.cta p{margin-top:10px;max-width:62ch}
+.btn{display:inline-block;font:600 15px var(--f-ui);background:var(--rust);color:#fff;padding:14px 26px;text-decoration:none;border:0;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--rust-deep)}
+.btn.ghost{background:transparent;color:var(--rust);border:1px solid var(--rust)}
+.btn.ghost:hover{background:var(--rust);color:#fff}
+footer{background:var(--night);color:#E9DED2;font-family:var(--f-ui);font-size:14px}
+footer .wrap{padding-block:30px;display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:space-between}
+
+/* Bio page */
+.bio{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:48px;padding-top:40px}
+.bio aside{display:flex;flex-direction:column;gap:22px}
+.bio aside img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;max-width:100%}
+.facts{background:var(--paper);border:1px solid var(--line);padding:20px 22px;display:grid;gap:18px}
+.facts h4{margin:0 0 6px;font-family:var(--f-ui);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#7B6A5B}
+.facts ul{margin:0;padding-left:18px;font-size:14.5px;line-height:1.55;display:grid;gap:6px}
+.bio-main{min-width:0}
+.bio-main .role{margin-bottom:6px}
+.bio-main h1{font-family:var(--f-display);font-weight:500;color:var(--rust);font-size:clamp(2.1rem,4.5vw,2.9rem)}
+.bio-main .lede{font-size:18px;margin-top:18px;max-width:64ch}
+.bio-main .body{display:grid;gap:16px;margin-top:18px;max-width:66ch}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips span{font-family:var(--f-ui);font-size:13px;background:var(--sand);border:1px solid var(--line);padding:5px 12px}
+.bio-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.team-strip{margin-top:56px}
+.team-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.mini{text-decoration:none;color:inherit;cursor:pointer;display:grid;gap:8px}
+.mini img,.mini .ph{aspect-ratio:1/1;width:100%;object-fit:cover;object-position:top}
+.mini .ph b{font-size:30px}
+.mini strong{font-family:var(--f-head);color:var(--rust);font-size:15px}
+.mini small{font-family:var(--f-ui);color:#7B6A5B;font-size:12.5px;display:block;margin-top:-6px}
+
+@media (max-width:900px){
+  .nav{display:none}
+  .founders,.staff{grid-template-columns:minmax(0,1fr)}
+  .bio{grid-template-columns:minmax(0,1fr);gap:28px}
+  .bio aside img{max-width:320px}
+  .team-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cta .wrap{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:560px){
+  .fcard{grid-template-columns:minmax(0,1fr)}
+  .fcard img{aspect-ratio:4/5;object-position:top}
+  .person{grid-template-columns:minmax(0,1fr);gap:18px}
+  .person img,.person .ph{max-width:240px}
+  .scard{grid-template-columns:minmax(0,1fr)}
+  .scard img,.scard .ph{max-width:200px}
+  .scard img{aspect-ratio:2/3;object-fit:cover}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<div class="mock-bar">
+  <strong>Rogers &amp; Garvie · About restructure mockup</strong>
+  <div class="mock-tabs" role="tablist" aria-label="Mockup pages">
+    <button role="tab" id="t-about" data-go="about" aria-selected="true">About Us<span class="url">/about/</span></button>
+    <button role="tab" id="t-grant" data-go="grant" aria-selected="false">Grant Rogers<span class="url">/about/grant-rogers/</span></button>
+    <button role="tab" id="t-thomas" data-go="thomas" aria-selected="false">Thomas Garvie<span class="url">/about/thomas-garvie/</span></button>
+  </div>
+</div>
+
+<div class="notes">
+  <details>
+    <summary>Mockup notes for review (click to expand)</summary>
+    <ul>
+      <li><b>Structure:</b> /about/ becomes a hub. Grant and Thomas get their own bio pages (child URLs of /about/), linked from feature cards at the top. Everyone else is listed in full on /about/.</li>
+      <li><b>Attorneys vs. Staff:</b> Grant asked for an "Attorneys" heading above a "Staff" heading so the law clerk isn't read as an attorney. Kennedy Templeton is an Associate Attorney, so she sits in the Attorneys section (full bio inline, no separate page for now). Maggie (Law Clerk) and Madelyn (Paralegal) are under Staff.</li>
+      <li><b>Kennedy's bio:</b> Grant sent an "Updated Bios.docx" at 11:48 MT with one edit to her bio. That file wasn't in Drive yet, so this mock uses the first version. <span class="flag">Verify</span> Swap in the updated text before build.</li>
+      <li><b>Thomas's bio page:</b> Uses his current live bio. He didn't send a new one. Grant's page uses the new bio already live.</li>
+      <li><b>SEO:</b> Each attorney page should carry Person/Attorney schema (name, jobTitle, alumniOf, worksFor, image) and a unique title tag, e.g. "Grant Rogers | Laramie, WY Attorney | Rogers &amp; Garvie". Keep the "Contact Grant/Thomas" buttons, but point them at /contact/ instead of the current empty mailto: link.</li>
+      <li>If Kennedy should also get her own page later, her row converts to a third feature card with no layout change.</li>
+    </ul>
+  </details>
+</div>
+
+<header class="site-hdr">
+  <div class="hdr-in">
+    <div class="logo"><span class="mono">RG</span><span class="name">Rogers &amp;<br>Garvie <small style="font-size:11px">LLC</small></span></div>
+    <nav class="nav" aria-label="Site (mock)"><span class="on">About Us</span><span>Practice Areas</span><span>Resources</span><span>Payments</span><span>Contact</span></nav>
+  </div>
+</header>
+<div class="crumb"><div id="crumb">Home / About Us</div></div>
+
+<!-- ================= ABOUT HUB ================= -->
+<main id="p-about">
+  <div class="wrap">
+    <h1 class="page-title">About Us</h1>
+    <p class="intro">Rogers &amp; Garvie, LLC is a Laramie, Wyoming law firm formed in February 2025 by Grant Rogers and Thomas Garvie. Meet the attorneys and staff who work on your case.</p>
+
+    <div class="sec-head"><h2>Attorneys</h2><span class="rule"></span></div>
+
+    <div class="founders">
+      <a class="fcard" href="#grant" data-go="grant">
+        <img src="images/grant.jpg" alt="Grant Rogers, co-founder of Rogers &amp; Garvie">
+        <div class="fbody">
+          <span class="role">Co-Founder &amp; Member</span>
+          <h3>Grant Rogers</h3>
+          <p>Grant represents businesses and property owners in transactions, disputes, and litigation, and serves Wyoming families in family law, criminal defense, and probate and estate planning.</p>
+          <span class="more">Read Grant's bio <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+      <a class="fcard" href="#thomas" data-go="thomas">
+        <img src="images/thomas.jpg" alt="Thomas Garvie, co-founder of Rogers &amp; Garvie">
+        <div class="fbody">
+          <span class="role">Co-Founder</span>
+          <h3>Thomas Garvie</h3>
+          <p>A Wyoming native and former public defender, Thomas spent his first years of practice representing 200 to 300 people a year facing serious criminal charges. There is no place he is more comfortable than the courtroom.</p>
+          <span class="more">Read Thomas's bio <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
+    </div>
+
+    <div style="margin-top:12px">
+      <article class="person">
+        <img src="images/kennedy.jpg" alt="Kennedy Templeton, associate attorney">
+        <div class="pbody">
+          <span class="role">Associate Attorney</span>
+          <h3>Kennedy Templeton <span class="flag" title="Updated bio pending">Bio v1</span></h3>
+          <p>Kennedy Templeton joined Rogers &amp; Garvie, LLC as an associate in August 2026. Kennedy graduated with honors from the University of Wyoming College of Law in May 2026. She previously earned her bachelor's degree in criminal justice and history, summa cum laude, from the University of Wyoming in 2023.</p>
+          <div id="k-more" hidden style="display:grid;gap:12px">
+            <p>During law school, Kennedy was awarded the Bernstein Scholarship, which provided her the opportunity to travel to Cambodia for two months where she worked with a non-governmental organization providing legal services to women and children. She also studied international criminal law abroad through an externship at Trinity College in Cambridge, England, and The Hague in the Netherlands.</p>
+            <p>Kennedy was the recipient of the Outstanding Student Award for the International Human Rights Clinic and served as a staff member of the Wyoming Law Review. She was also a member of the University of Wyoming's Jessup International Law Moot Court team, competing in the world's largest international moot court competition. Her practical legal experience includes serving as a judicial intern for the Honorable Misha Westby of the Second Judicial District Court of Wyoming in Albany County and as an intern with The Spence Law Firm in Jackson, Wyoming.</p>
+            <p>Kennedy is licensed to practice in the State of Wyoming and the United States District Court for the District of Wyoming.</p>
+            <p>Originally from Bakersfield, California, Kennedy now enjoys calling Wyoming home. When she's away from the office, Kennedy enjoys traveling, cooking, gardening, reading, and spending time with family and friends. She especially enjoys coaching local youth sports and watching her son play hockey. If she isn't at the rink or in the kitchen, there's a good chance she's somewhere with a book and a cup of coffee in hand.</p>
+          </div>
+          <button class="toggle" id="k-toggle" aria-expanded="false" aria-controls="k-more">Read full bio +</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="sec-head"><h2>Staff</h2><span class="rule"></span></div>
+
+    <div class="staff">
+      <article class="scard">
+        <img src="images/maggie.jpg" alt="Maggie Asay, law clerk">
+        <div class="pbody">
+          <span class="role">Law Clerk</span>
+          <h3>Maggie Asay</h3>
+          <p>Maggie Asay joined Rogers &amp; Garvie, LLC as a law clerk in September 2026. Maggie is a Wyoming native proud to be raising her family in the state she calls home. Maggie earned her bachelor's degree in Legal Science from Purdue University Global before attending the University of Wyoming College of Law.</p>
+          <p>During law school, Maggie gained experience working with clients and appearing in court, seeing clients across Wyoming, and traveling to Europe to study International Human Rights. She began working with the Defender Aid Clinic as a legal assistant the summer after her first year of law school and continued with the clinic as its Student Director through graduation.</p>
+          <p>Maggie's time with the Defender Aid Clinic gave her a sense of purpose, direction, created a deep passion for criminal defense, and a commitment to advocating for those in need. That experience affirmed her desire to build a career in criminal law, family law, mediation, and serving the people of Wyoming.</p>
+        </div>
+      </article>
+      <article class="scard">
+        <img src="images/madelyn.jpg" alt="Madelyn Beck, paralegal">
+        <div class="pbody">
+          <span class="role">Paralegal</span>
+          <h3>Madelyn Beck</h3>
+          <p>Madelyn Beck is the office paralegal and secretary (and sometimes small appliance repairwoman). She joined the firm in December 2024. In May 2026, she earned her paralegal certificate from Casper College Paralegal Studies Program.</p>
+          <p>She grew up on a ranch in Manhattan, Montana, and brings a decade of journalism experience to her work, using it to help the attorneys find the truth and to help clients navigate opaque court processes.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</main>
+
+<!-- ================= GRANT ================= -->
+<main id="p-grant" hidden>
+  <div class="wrap bio">
+    <aside>
+      <img src="images/grant.jpg" alt="Grant Rogers">
+      <div class="facts">
+        <div><h4>Education</h4><ul><li>University of Wyoming College of Law, J.D. with honors (2020)</li><li>University of Wyoming, B.A., Political Science and Economics</li></ul></div>
+        <div><h4>Admitted to practice</h4><ul><li>State of Wyoming</li><li>U.S. District Court for the District of Wyoming</li></ul></div>
+        <div><h4>Activities &amp; Affiliations</h4><ul><li>The Wyoming Chapter of the Nature Conservancy, Trustee</li><li>Sheridan &amp; Johnson County Bar Association, Vice President, 2021 to 2024</li><li>Federal Indian &amp; Tribal Section Council of the Wyoming State Bar Association, Secretary</li></ul></div>
+      </div>
+    </aside>
+    <div class="bio-main">
+      <div class="role">Co-Founder &amp; Member</div>
+      <h1>Grant Rogers</h1>
+      <p class="lede">Grant Rogers is a co-founder and member of Rogers &amp; Garvie, LLC in Laramie, Wyoming. He represents businesses and property owners in transactions, disputes, and litigation, with a focus on civil litigation, business and commercial matters, environmental and regulatory advising, and real property. He also serves Wyoming individuals and families in family law, criminal defense, and probate and estate planning.</p>
+      <div class="chips" aria-label="Practice focus"><span>Civil Litigation</span><span>Business &amp; Commercial</span><span>Environmental &amp; Regulatory</span><span>Real Property</span><span>Family Law</span><span>Criminal Defense</span><span>Probate &amp; Estate Planning</span></div>
+      <div class="body">
+        <p>Grant graduated with honors from the University of Wyoming College of Law in 2020, where he served on the board of the Wyoming Law Review. While in law school, he was a judicial intern for District Judge Timothy C. Day of the Ninth Judicial District of Wyoming. He also interned for the Albany County Attorney's Office, the Environment and Natural Resources Division of the U.S. Department of Justice, the Spence Law Firm, and the UW Defender Aid Clinic. Before law school, he completed degrees in Political Science and Economics at the University of Wyoming.</p>
+        <p>After law school, Grant practiced with Davis &amp; Cannon, LLP in Sheridan. He opened his own practice as The Rogers Law Firm in January 2024, and in February 2025 joined with Thomas Garvie to form Rogers &amp; Garvie, LLC.</p>
+        <p>Grant is licensed to practice in the State of Wyoming and the United States District Court for the District of Wyoming.</p>
+        <p>Grant was born and raised in Jackson, Wyoming, and has deep roots with the state. He spends his free time climbing, running, reading, and baking, and is all ears for a good story.</p>
+      </div>
+      <div class="bio-actions"><a class="btn" href="#grant">Contact Grant</a><a class="btn ghost" href="#about" data-go="about">← Back to About Us</a></div>
+    </div>
+  </div>
+  <div class="wrap team-strip">
+    <div class="sec-head" style="margin-top:0"><h2>Meet the Team</h2><span class="rule"></span></div>
+    <div class="team-row" data-team="grant"></div>
+  </div>
+</main>
+
+<!-- ================= THOMAS ================= -->
+<main id="p-thomas" hidden>
+  <div class="wrap bio">
+    <aside>
+      <img src="images/thomas.jpg" alt="Thomas Garvie">
+      <div class="facts">
+        <div><h4>Education</h4><ul><li>University of Wyoming College of Law, J.D.</li><li>University of Wyoming, B.A., Political Science</li></ul></div>
+        <div><h4>Activities &amp; Affiliations</h4><ul><li>Wyoming Child &amp; Family Development, Board of Directors</li></ul></div>
+      </div>
+    </aside>
+    <div class="bio-main">
+      <div class="role">Co-Founder</div>
+      <h1>Thomas Garvie</h1>
+      <p class="lede">Thomas is a Wyoming native and a graduate of the University of Wyoming where he earned a Bachelor's degree in Political Science before attending the University of Wyoming College of Law. While studying at the College of Law, he focused on gaining as much practical experience as possible.</p>
+      <div class="body">
+        <p>During that time, Thomas served as a Judicial Intern to Wyoming Supreme Court Justice Keith G. Kautz, interned at the Albany County Attorney's Office as well as the Hirst Applegate Law Firm, and spent his final year working as a student-attorney for the College of Law's Defender Aid Clinic.</p>
+        <p>Thomas' dream upon graduating was to become a Public Defender to help protect those without the knowledge to defend themselves nor the financial ability to hire an attorney. He spent his first years of practice with the Wyoming Public Defender's Office, representing 200-300 individuals a year, each facing serious criminal charges.</p>
+        <p>Not every attorney likes to go to court, but there is no place Thomas is more comfortable. While he meets each new client with compassion and empathy, he understands that honed skills and the willingness to fight are what will make a difference in their lives.</p>
+      </div>
+      <div class="bio-actions"><a class="btn" href="#thomas">Contact Thomas</a><a class="btn ghost" href="#about" data-go="about">← Back to About Us</a></div>
+    </div>
+  </div>
+  <div class="wrap team-strip">
+    <div class="sec-head" style="margin-top:0"><h2>Meet the Team</h2><span class="rule"></span></div>
+    <div class="team-row" data-team="thomas"></div>
+  </div>
+</main>
+
+<section class="cta">
+  <div class="wrap">
+    <div>
+      <h2>The Right Attorney Changes What Happens Next</h2>
+      <p>Criminal cases move fast, and the decisions you make in the first days shape everything that follows. Work with attorneys who know Wyoming courts, understand the prosecution's playbook, and fight for results that protect your record, your livelihood, and your life.</p>
+    </div>
+    <a class="btn" href="#about">Start Building Your Defense</a>
+  </div>
+</section>
+<footer><div class="wrap"><span>office@rogersandgarvie.com · 200 S. 2nd St, Laramie, WY 82070 · (307) 318-2847</span><span>© 2026 Rogers &amp; Garvie LLC</span></div></footer>
+
+<script>
+const PEOPLE={
+  grant:{name:"Grant Rogers",role:"Co-Founder & Member",img:document.querySelector('#p-grant aside img').src,go:"grant"},
+  thomas:{name:"Thomas Garvie",role:"Co-Founder",img:document.querySelector('#p-thomas aside img').src,go:"thomas"},
+  kennedy:{name:"Kennedy Templeton",role:"Associate Attorney",img:document.querySelector('.person img').src,go:"about"},
+  maggie:{name:"Maggie Asay",role:"Law Clerk",img:document.querySelectorAll('.scard img')[0].src,go:"about"},
+  madelyn:{name:"Madelyn Beck",role:"Paralegal",img:document.querySelectorAll('.scard img')[1].src,go:"about"}
+};
+document.querySelectorAll('.team-row').forEach(row=>{
+  const skip=row.dataset.team;
+  row.innerHTML=Object.entries(PEOPLE).filter(([k])=>k!==skip).map(([k,p])=>
+    `<a class="mini" href="#${p.go}" data-go="${p.go}">${p.img?`<img src="${p.img}" alt="">`:`<div class="ph"><span><b>${p.ini}</b></span></div>`}<strong>${p.name}</strong><small>${p.role}</small></a>`).join('');
+});
+const crumbs={about:'Home / About Us',grant:'Home / <a data-go="about">About Us</a> / Grant Rogers',thomas:'Home / <a data-go="about">About Us</a> / Thomas Garvie'};
+function show(id){
+  if(!crumbs[id]) id='about';
+  ['about','grant','thomas'].forEach(p=>{
+    document.getElementById('p-'+p).hidden = p!==id;
+    document.getElementById('t-'+p).setAttribute('aria-selected', p===id);
+  });
+  document.getElementById('crumb').innerHTML=crumbs[id];
+  window.scrollTo({top:0});
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-go]'); if(!t) return;
+  e.preventDefault(); const id=t.dataset.go;
+  try{history.replaceState(null,'','#'+id)}catch(_){}
+  show(id);
+});
+const kt=document.getElementById('k-toggle'),km=document.getElementById('k-more');
+kt.addEventListener('click',()=>{const open=km.hidden;km.hidden=!open;kt.setAttribute('aria-expanded',open);kt.textContent=open?'Show less −':'Read full bio +';});
+show((location.hash||'').slice(1));
+</script>
+
+</body>
+</html>
